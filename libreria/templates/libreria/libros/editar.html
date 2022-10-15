@@ -4,6 +4,17 @@
 
 {% block contenido %}
 
-Formulario para editar libro
+<div class="card">
+    <div class="card-header">
+        Editar información del libro
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Datos del libro</h4>
+        
+        {% include 'libreria/libros/form.html' %}
+
+    </div>
+    
+</div>
 
 {% endblock %}

@@ -15,3 +15,5 @@ def libros(request):
     return render(request, TPL_LIBS + 'index.html')
 def crear(request):
     return render(request, TPL_LIBS + 'crear.html')
+def editar(request):
+    return render(request, TPL_LIBS + 'editar.html')
