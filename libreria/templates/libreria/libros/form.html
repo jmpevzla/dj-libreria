@@ -3,11 +3,31 @@
 
     {% csrf_token %}
 
-    {% for field in formulario %}
+    {% for item in formulario %}
     <div class="mb-3">
-      <label for="" class="form-label">Nombre</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Nombre">
+      <label for="" class="form-label">{{ item.label }}</label>
+      
+      {% if item.field.widget.input_type %}
+      <input 
+        type="{{ item.field.widget.input_type }}"
+        class="form-control" 
+        name="{{ item.name }}"
+        value="{{ item.value|default:"" }}" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder="{{ item.label }}">
+      {% else %}
+      <textarea
+        class="form-control"
+        name="{{ item.name }}" 
+        id="" 
+        aria-describedby="helpId" 
+        placeholder="{{ item.label }}"
+      >{{ item.value|default:"" }}</textarea>
+      {% endif %}
     </div>
+    <div class="col-12 help-text">{{ item.errors }}</div>
     {% endfor %}
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Enviar Información">
 </form>
