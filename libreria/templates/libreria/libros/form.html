@@ -8,6 +8,12 @@
       <label for="" class="form-label">{{ item.label }}</label>
       
       {% if item.field.widget.input_type %}
+      
+      {% if item.field.widget.input_type == 'file' and item.value %}
+      <br>
+      <img src="{{ formulario.instance.imagen.url }}" width="100" class="img-fluid rounded-top" alt="">
+      {% endif %}
+      
       <input 
         type="{{ item.field.widget.input_type }}"
         class="form-control" 
