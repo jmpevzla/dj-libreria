@@ -26,7 +26,7 @@
                     <tr class="">
                         <td scope="row">{{ libro.id }}</td>
                         <td>{{ libro.titulo }}</td>
-                        <td>{{ libro.imagen }}</td>
+                        <td><img src="{{ libro.imagen.url }}" height="100" class="img-fluid rounded-top" alt=""></td>
                         <td>{{ libro.descripcion }}</td>
                         <td> 
                             <a name="" id="" class="btn btn-info" href="{% url 'editar' %}" role="button">Editar</a>
