@@ -9,7 +9,14 @@ class Libro(models.Model):
 
     def __str__(self) -> str:
         return self.titulo
-        
+
+    def save(self):
+        if self.id:
+            previous = Libro.objects.get(id = self.id).imagen
+            if self.imagen != previous: 
+                self.imagen.storage.delete(previous.name)
+        return super().save()
+
     def delete(self, using = None, keep_parents = False):
         self.imagen.storage.delete(self.imagen.name)
         return super().delete()
