@@ -23,8 +23,10 @@ def crear(request):
         return redirect('libros')
     # print(formulario.fields.get('titulo').label)
     return render(request, TPL_LIBS + 'crear.html', { 'formulario': formulario })
-def editar(request):
-    return render(request, TPL_LIBS + 'editar.html')
+def editar(request, id):
+    libro = Libro.objects.get(id = id)
+    formulario = LibroForm(request.POST or None, request.FILES or None, instance=libro)
+    return render(request, TPL_LIBS + 'editar.html', { 'formulario' : formulario })
 def eliminar(request, id):
     libro = Libro.objects.get(id = id)
     libro.delete()
